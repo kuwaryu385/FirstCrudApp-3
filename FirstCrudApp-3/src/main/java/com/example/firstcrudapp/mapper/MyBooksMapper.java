@@ -9,6 +9,11 @@ import com.example.firstcrudapp.domein.MyBooksModel;
 @Mapper
 
 public interface MyBooksMapper {
+
+	//テーブルのデータ全件取得
 	List<MyBooksModel> selectAll();
+
+	//指定したmy_booksテーブルのデータを追加
+	void insert(MyBooksModel myBooksModel);
 
 }

@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.firstcrudapp.mapper.MyBooksMapper">
 
+<!--すべてのテーブルを選択してテーブル一覧表示 -->
  <select id="selectAll" resultType="com.example.firstcrudapp.domein.MyBooksModel">
         SELECT * FROM my_books;
     </select>
+
+<insert id="insert" parameterType="com.example.firstcrudapp.domein.MyBooksModel">
+        INSERT INTO my_books ( id, title, author )
+        VALUES (#{id}, #{title}, #{author})
+    </insert>
 
 </mapper>

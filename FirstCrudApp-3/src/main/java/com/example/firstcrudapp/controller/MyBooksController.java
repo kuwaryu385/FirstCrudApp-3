@@ -43,13 +43,13 @@ public class MyBooksController {
 	//新規作成画面の挿入処理
 
 	@PostMapping
-	public String postBooksCreate(@ModelAttribute @Valid MyBooksModel myBooksModel,
+	public String postBooksCreate(@ModelAttribute("myBooksModel") @Valid MyBooksModel myBooksModel,
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return "new";
 		}
 		myBooksMapper.insert(myBooksModel);
-		return "redirect:/index";
+		return "redirect:/";
 	}
 
 }

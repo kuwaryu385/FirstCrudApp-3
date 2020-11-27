@@ -24,11 +24,11 @@
             <h5 class="card-title">NewBooks</h5>
           </div>
         <div class="card-body">
-              <form th:method="post" th:action="@{/index}" th:object="${myBook}">
+              <form th:method="post" th:action="@{/}" th:object="${myBook}">
                 <div class="form-group row">
                     <label class="col-md-2 control-label">タイトル</label>
                     <div class="col-md-10">
-                      <input class="form-control" type="text" name="name" th:value="*{title}" />
+                      <input class="form-control" type="text" name="title" th:value="*{title}" />
                       <div class="text-danger" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     <label class="col-md-2 control-label">作者</label>
                     <div class="col-md-10">
                       <input class="form-control" type="text" name="author" th:value="*{author}"/>
-                      <div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{author}"></div>
+                      <div class="text-danger" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></div>
                     </div>
                 </div>
 

@@ -9,9 +9,9 @@
         SELECT * FROM my_books;
     </select>
 
-<insert id="insert" parameterType="com.example.firstcrudapp.domein.MyBooksModel">
-        INSERT INTO my_books ( id, title, author )
-        VALUES (#{id}, #{title}, #{author})
+<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO my_books (title, author )
+        VALUES (#{title}, #{author})
     </insert>
 
 </mapper>

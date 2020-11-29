@@ -18,7 +18,11 @@ public class MyBooksService {
 	@Transactional
 	public List<MyBooksModel> selectAll() {
 		return myBooksMapper.selectAll();
+	}
 
+	@Transactional
+	public void insert(MyBooksModel myBooksModel) {
+		myBooksMapper.insert(myBooksModel);
 	}
 
 }

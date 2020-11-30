@@ -13,6 +13,9 @@ public interface MyBooksMapper {
 	//テーブルのデータ全件取得
 	List<MyBooksModel> selectAll();
 
+	//IDでテーブル情報の取得
+	MyBooksModel selectOne(Integer id);
+
 	//指定したmy_booksテーブルのデータを追加
 	//@Insert("insert into my_books
 	void insert(MyBooksModel myBooksModel);

@@ -13,11 +13,16 @@ import com.example.firstcrudapp.mapper.MyBooksMapper;
 public class MyBooksService {
 
 	@Autowired
-	private MyBooksMapper myBooksMapper;
+	public MyBooksMapper myBooksMapper;
 
 	@Transactional
 	public List<MyBooksModel> selectAll() {
 		return myBooksMapper.selectAll();
+	}
+
+	@Transactional
+	public MyBooksModel selectOne(Integer id) {
+		return myBooksMapper.selectOne(id);
 	}
 
 	@Transactional

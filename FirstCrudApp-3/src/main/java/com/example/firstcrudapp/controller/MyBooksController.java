@@ -1,33 +1,29 @@
 package com.example.firstcrudapp.controller;
 
-import java.util.List;
-
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.firstcrudapp.domein.MyBooksModel;
-import com.example.firstcrudapp.mapper.MyBooksMapper;
+import com.example.firstcrudapp.service.MyBooksService;
 
 @Controller
 @RequestMapping("/")
 public class MyBooksController {
 
 	@Autowired
-	MyBooksMapper myBooksMapper;
+	private MyBooksService myBooksService;
 
 	//テーブル一覧画面の表示
 	@GetMapping
 	public String index(Model model) {
-		List<MyBooksModel> list = myBooksMapper.selectAll();
-		model.addAttribute("myBooks", list);
+		model.addAttribute("myBooks", myBooksService.selectAll());
 		return "index";
 	}
 
@@ -43,12 +39,12 @@ public class MyBooksController {
 	//新規作成画面の挿入処理
 
 	@PostMapping
-	public String postBooksCreate(@ModelAttribute("myBooksModel") @Valid MyBooksModel myBooksModel,
+	public String postBooksCreate(@ModelAttribute("myBook") @Validated MyBooksModel myBooksModel,
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return "new";
 		}
-		myBooksMapper.insert(myBooksModel);
+		myBooksService.insert(myBooksModel);
 		return "redirect:/";
 	}
 

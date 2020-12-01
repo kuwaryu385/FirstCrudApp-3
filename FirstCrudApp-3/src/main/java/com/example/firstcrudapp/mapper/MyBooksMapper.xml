@@ -9,7 +9,7 @@
     </select>
 
 <!--IDを選択して本の詳細情報を取得 -->
-<select id="slectOne" resultType="com.example.firstcrudapp.domein.MyBooksModel">
+<select id="selectOne" resultType="com.example.firstcrudapp.domein.MyBooksModel">
     select * from my_books where id= #{id}
   </select>
 

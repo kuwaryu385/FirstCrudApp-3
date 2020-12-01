@@ -24,21 +24,21 @@ public class MyBooksController {
 	//テーブル一覧画面の表示　ReadAll処理
 	@GetMapping
 	public String index(Model model) {
-		model.addAttribute("myBooks", myBooksService.selectAll());
+		model.addAttribute("mybooks", myBooksService.selectAll());
 		return "index";
 	}
 
 	//本のIDにて、本の内容を取得
 	@GetMapping("{id}")
 	public String show(@PathVariable Integer id, Model model) {
-		model.addAttribute(" aBook", myBooksService.selectOne(id));
+		model.addAttribute("mybook", myBooksService.selectOne(id));
 		return "show";
 	}
 
 	//新規作成画面の表示
 
 	@GetMapping("new")
-	public String getBooksNew(@ModelAttribute("myBook") MyBooksModel myBooksModel, Model model) {
+	public String getBooksNew(@ModelAttribute("mybook") MyBooksModel myBooksModel, Model model) {
 		//		MyBooksModel mybooks = new MyBooksModel();
 		//		model.addAttribute("myBook", mybooks);
 		return "new";
@@ -47,7 +47,7 @@ public class MyBooksController {
 	//新規作成画面の挿入処理
 
 	@PostMapping
-	public String postBooksCreate(@ModelAttribute("myBook") @Validated MyBooksModel myBooksModel,
+	public String postBooksCreate(@ModelAttribute("mybook") @Validated MyBooksModel myBooksModel,
 			BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			return "new";

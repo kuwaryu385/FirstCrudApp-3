@@ -26,11 +26,11 @@
           <h5 class="card-title">MyBookList<a href="/new" class="btn btn-success float-right">新規</a></h5>
         </div>
 
-        <div class="card-body" th:if="!${myBooks.size()}">
+        <div class="card-body" th:if="!${mybooks.size()}">
           <p>本がありません。</p>
         </div>
 
-   <table class="table" th:if="${myBooks.size()}">
+   <table class="table" th:if="${mybooks.size()}">
    <thead class="thead-dark">
         <tr>
             <th style="width: 10%">ＩＤ</th>
@@ -40,10 +40,10 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="book: ${myBooks}">
-            <td th:text="${book.id}"></td>
-            <td th:text="${book.title}"></td>
-            <td th:text="${book.author}"></td>
+        <tr th:each="mybook: ${mybooks}" th:object="${mybook}">
+            <td th:text="*{id}"></td>
+            <td th:text="*{title}"></td>
+            <td th:text="*{author}"></td>
             <td class="float-none">
                <form th:action="@{/{id}(id=*{id})}" th:method="delete">
                     <a class="btn btn-primary" th:href="@{/{id}(id=*{id})}">詳細</a>

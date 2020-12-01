@@ -25,10 +25,11 @@
           </div>
 
           <div class="card-body">
-            <div th:object="${myBooks}">
+            <div th:object="${mybook}">
+
               <div class="form-group row">
-                <label class="col-md-2">タイトル</label>
-            <div class="col-md-10" th:text="*{title}"></div>
+                  <label class="col-md-2 control-label">タイトル</label>
+                  <div class="col-md-10 form-control-static" th:text="*{title}"></div>
                 </div>
 
                 <div class="form-group row">

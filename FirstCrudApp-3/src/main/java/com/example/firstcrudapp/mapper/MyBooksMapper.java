@@ -20,4 +20,7 @@ public interface MyBooksMapper {
 	//@Insert("insert into my_books
 	void insert(MyBooksModel myBooksModel);
 
+	//登録された本の情報を更新
+	void update(MyBooksModel myBooksModel);
+
 }

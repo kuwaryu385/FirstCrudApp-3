@@ -20,4 +20,9 @@
         VALUES (#{title}, #{author})
     </insert>
 
+<!--登録された本の情報を変更　タイトル　作者 -->
+ <update id="update">
+    update my_books set title=#{title}, author=#{author} where id= #{id}
+  </update>
+
 </mapper>

@@ -30,4 +30,9 @@ public class MyBooksService {
 		myBooksMapper.insert(myBooksModel);
 	}
 
+	@Transactional
+	public void update(MyBooksModel myBooksModel) {
+		myBooksMapper.update(myBooksModel);
+	}
+
 }

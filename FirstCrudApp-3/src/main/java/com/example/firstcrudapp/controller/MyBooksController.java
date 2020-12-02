@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.firstcrudapp.domein.MyBooksModel;
@@ -36,7 +37,6 @@ public class MyBooksController {
 	}
 
 	//新規作成画面の表示
-
 	@GetMapping("new")
 	public String getBooksNew(@ModelAttribute("mybook") MyBooksModel myBooksModel, Model model) {
 		//		MyBooksModel mybooks = new MyBooksModel();
@@ -44,8 +44,14 @@ public class MyBooksController {
 		return "new";
 	}
 
-	//新規作成画面の挿入処理
+	//変更画面の表示
+	@GetMapping("{id}/edit")
+	public String edit(@PathVariable Integer id, @ModelAttribute("mybook") MyBooksModel myBooksModel, Model model) {
+		model.addAttribute("mybook", myBooksService.selectOne(id));
+		return "edit";
+	}
 
+	//新規作成画面の挿入処理
 	@PostMapping
 	public String postBooksCreate(@ModelAttribute("mybook") @Validated MyBooksModel myBooksModel,
 			BindingResult bindingResult) {
@@ -54,6 +60,19 @@ public class MyBooksController {
 		}
 		myBooksService.insert(myBooksModel);
 		return "redirect:/";
+	}
+
+	@PutMapping("{id}")
+	public String updateBooks(@PathVariable Integer id, @ModelAttribute("mybook") @Validated MyBooksModel myBooksModel,
+			BindingResult bindingResult, Model model) {
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("mybook", myBooksModel);
+			return "edit";
+		} else {
+			myBooksModel.setId(id);
+			myBooksService.update(myBooksModel);
+			return "redirect:/";
+		}
 	}
 
 }

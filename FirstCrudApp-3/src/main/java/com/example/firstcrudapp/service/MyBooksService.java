@@ -35,4 +35,9 @@ public class MyBooksService {
 		myBooksMapper.update(myBooksModel);
 	}
 
+	@Transactional
+	public void delete(Integer id) {
+		myBooksMapper.delete(id);
+	}
+
 }

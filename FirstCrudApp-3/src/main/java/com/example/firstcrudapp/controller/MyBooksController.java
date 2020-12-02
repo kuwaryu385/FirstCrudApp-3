@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -51,7 +52,7 @@ public class MyBooksController {
 		return "edit";
 	}
 
-	//新規作成画面の挿入処理
+	//新規作成画面の挿入処理　エラーで戻り、成功したら一覧へ画面遷移
 	@PostMapping
 	public String postBooksCreate(@ModelAttribute("mybook") @Validated MyBooksModel myBooksModel,
 			BindingResult bindingResult) {
@@ -62,6 +63,7 @@ public class MyBooksController {
 		return "redirect:/";
 	}
 
+	//登録情報を更新画面へ　入力なければ、エラー出て戻り、更新したら一覧画面へ値が更新されて戻る
 	@PutMapping("{id}")
 	public String updateBooks(@PathVariable Integer id, @ModelAttribute("mybook") @Validated MyBooksModel myBooksModel,
 			BindingResult bindingResult, Model model) {
@@ -73,6 +75,13 @@ public class MyBooksController {
 			myBooksService.update(myBooksModel);
 			return "redirect:/";
 		}
+	}
+
+	//本の情報削除します
+	@DeleteMapping("{id}")
+	public String delete(@PathVariable Integer id) {
+		myBooksService.delete(id);
+		return "redirect:/";
 	}
 
 }

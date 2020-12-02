@@ -24,5 +24,9 @@
  <update id="update">
     update my_books set title=#{title}, author=#{author} where id= #{id}
   </update>
+<!--登録された本の情報を削除 -->
+<delete id="delete">
+    delete from my_books where id = #{id}
+  </delete>
 
 </mapper>

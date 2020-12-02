@@ -23,4 +23,7 @@ public interface MyBooksMapper {
 	//登録された本の情報を更新
 	void update(MyBooksModel myBooksModel);
 
+	//登録された本を削除
+	void delete(Integer id);
+
 }

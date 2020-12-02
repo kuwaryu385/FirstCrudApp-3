@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.firstcrudapp.mapper.MyBooksMapper">
+
+<!--すべてのテーブルを選択してテーブル一覧表示 -->
+ <select id="selectAll" resultType="com.example.firstcrudapp.domein.MyBooksModel">
+        SELECT * FROM my_books;
+    </select>
+
+<!--IDを選択して本の詳細情報を取得 -->
+<select id="selectOne" resultType="com.example.firstcrudapp.domein.MyBooksModel">
+    select * from my_books where id= #{id}
+  </select>
+
+
+<!--新しい本の情報を登録する　IDは番号順に自動生成　タイトル、作者の登録 -->
+<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO my_books (title, author )
+        VALUES (#{title}, #{author})
+    </insert>
+
+<!--登録された本の情報を変更　タイトル　作者 -->
+ <update id="update">
+    update my_books set title=#{title}, author=#{author} where id= #{id}
+  </update>
+<!--登録された本の情報を削除 -->
+<delete id="delete">
+    delete from my_books where id = #{id}
+  </delete>
+
+</mapper>

@@ -8,10 +8,11 @@ CRUD処理を実装した、My_Booksという本を登録する、本棚アプ�
 はじめて、CRUD処理を実装する際に、電子書籍Kindleの本を登録してなんの本があるか管理しようと思い作成した。
 
 ## Dependency
-SpringBoot 2.3.7.RELEASE 
-Thymeleaf 3.0.11.RELEASE
-mybatis-spring-boot-starter-2.1.4
-mysql
+
+SpringBoot 2.3.7.RELEASE  
+Thymeleaf 3.0.11.RELEASE  
+mybatis-spring-boot-starter-2.1.4  
+mysql  
 
 ## Usage
 ホーム画面から、新規登録ボタンを押し、フォームにタイトルと作者名を入れて登録。

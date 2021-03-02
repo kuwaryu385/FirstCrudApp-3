@@ -25,6 +25,7 @@ public class MyBooksController {
 
 	//テーブル一覧画面の表示　ReadAll処理
 	@GetMapping
+	//List
 	public String index(Model model) {
 		model.addAttribute("mybooks", myBooksService.selectAll());
 		return "index";

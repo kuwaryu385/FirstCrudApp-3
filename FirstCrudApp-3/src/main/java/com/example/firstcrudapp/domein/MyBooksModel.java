@@ -13,7 +13,7 @@ public class MyBooksModel {
 	private Integer id;
 	@NotBlank(message = "タイトルを入力してください")
 	private String title;
-	@NotBlank(message = "調子にのらないでください")
+	@NotBlank(message = "作者を入力してください")
 	private String author;
 
 }

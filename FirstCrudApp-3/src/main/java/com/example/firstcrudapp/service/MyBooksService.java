@@ -15,12 +15,10 @@ public class MyBooksService {
 	@Autowired
 	public MyBooksMapper myBooksMapper;
 
-	@Transactional
 	public List<MyBooksModel> selectAll() {
 		return myBooksMapper.selectAll();
 	}
 
-	@Transactional
 	public MyBooksModel selectOne(Integer id) {
 		return myBooksMapper.selectOne(id);
 	}
